@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const orderSchema = mongoose.Schema({
+const orderSchema = new mongoose.Schema({
     Customer_id:[
         {type:Schema.Types.ObjectId,ref:'Customers'}
     ],
@@ -16,3 +16,6 @@ const orderSchema = mongoose.Schema({
     },
 
 })
+
+const Order = mongoose.model('Contact',orderSchema)
+module.exports = Order
