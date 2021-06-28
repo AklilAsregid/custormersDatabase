@@ -1,23 +1,27 @@
 const mongoose = require('mongoose')
 
 const userSchema  = new mongoose.Schema({
-    name:{
+    name : {
         type:String,
         required:true
     },
-    Username:{
+    Username : {
         type: String,
         required:true
     },
-    password:{
+    password : {
         type:String,
         required:true
     },
-    roll:{
+    userImage : {
+        type: String
+    }
+    ,
+    roll : {
        type:String,
        default:'user'
     },
-    date:{
+    date : {
         type:Date,
         default: Date.now
     }
