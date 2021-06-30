@@ -1,6 +1,8 @@
-const router = require('express').Router()
+const express = require('express')
+const router = express.Router
+const Guard = require('./verifytoken')
 
-router.get('/',(req, res)=>{
+router.get('/',Guard,(req, res)=>{
     res.send("Wellcome here")
 })
 

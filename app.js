@@ -22,19 +22,23 @@ mongoose.connect(process.env.MONGOURI, {
 //enabling cors
 app.use(cors())
 
+app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 //for using json webtoken
 app.use(express.static('./public'))
+
 //routes
+//this route will contain CRUD operation for both Contact and Company
 app.use('/api/index',require('./routes/api/index.js'))
 
-//handle Productin
-    //static folder
-    app.use(express.static(__dirname + '/server/public/'))
+//this page will handle login and registration of user
+app.use('/api/auth',require('./routes/api/auth.js'))
 
-    //handle SPA
-    app.get(/.*/, (req, res) => res.sendFile(__dirname + '/server/public/index.html'))
+// //handle Productin
+//     //static folder
+//     app.use(express.static(__dirname + '/server/public/'))
 
+//     //handle SPA
+//     app.get(/.*/, (req, res) => res.sendFile(__dirname + '/server/public/index.html'))
 const port = process.env.PORT || 5000  
-
 app.listen(port,()=> console.log(`server is runnning on Port ${port} `))
